@@ -101,8 +101,9 @@ function validar_plate(plate) {
     var regex = /^([0-9]{4})([a-z]{3})$/i;
     return regex.test(plate) ? true : false;
 }
-createTable();
-function createTable() {
-    table = "<thead><tr><th>Matrícula</th><td>Marca</th><td>Color</th><th>Marca Rueda 1</th><th>Diametro rueda 1</th></th><th>Marca Rueda 2</th><th>Diametro rueda 2</th><th>Marca Rueda 3</th><th>Diametro rueda 3</th><th>Marca Rueda 4</th><th>Diametro rueda 4</th><thead>";
-    document.querySelector("#table").innerHTML = table;
+createList();
+function createList() {
+    table = "<table><thead><tr><th>Matrícula</th><th>Marca</th><th>Color</th><th>Marca Rueda 1</th><th>Diametro rueda 1</th></th><th>Marca Rueda 2</th><th>Diametro rueda 2</th><th>Marca Rueda 3</th><th>Diametro rueda 3</th><th>Marca Rueda 4</th><th>Diametro rueda 4</th></tr><thead></table>";
+    var resultat = document.getElementById("table");
+    resultat.innerHTML = table;
 }

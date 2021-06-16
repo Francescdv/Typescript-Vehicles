@@ -21,7 +21,7 @@ let car: Car;
 let marca: any;
 let diametro: any;
 let wheel: any;
-let table:any;
+let table: any;
 
 
 
@@ -38,10 +38,10 @@ function createCar() {
         plate.classList.add("is-invalid");
         document.getElementById("errorPlate")!.textContent = "El campo es obligatorio";
         acumErrores++;
-    }else if(!validar_plate(plate.value)){
-		plate.classList.add("is-invalid");
-		document.getElementById("errorPlate")!.textContent = "La matrícula no cumple el formato 0000ASD";
-		acumErrores ++;
+    } else if (!validar_plate(plate.value)) {
+        plate.classList.add("is-invalid");
+        document.getElementById("errorPlate")!.textContent = "La matrícula no cumple el formato 0000ASD";
+        acumErrores++;
     }
 
     if (brand.value == "") {
@@ -74,7 +74,7 @@ function createCar() {
             arrayCars.push(car);
             inputCar.classList.add("d-none");
             inputWheels.classList.remove("d-none");
-            
+
         }
     }
 
@@ -92,60 +92,60 @@ function createWheels() {
         diametro = document.querySelector('#diametro' + a) as HTMLInputElement;
 
 
-    if (marca.value == "") {
-        marca.classList.add("is-invalid");
-        document.getElementById("errorMarca" + a)!.textContent = "El campo es obligatorio";
-        acumErrores++;
-    }
-    if (diametro.value == "") {
-        diametro.classList.add("is-invalid");
-        document.getElementById("errorDiametro" + a)!.textContent = "El campo es obligatorio";
-        acumErrores++;
-    }else if(diametro.value > 4  || diametro.value < 0.4) {
-        diametro.classList.add("is-invalid");
-        document.getElementById("errorDiametro" + a)!.textContent = "Has de introducir un valor entre 0.4 y el 4.";
-        acumErrores++;
-    }
-}
-
-if (acumErrores == 0)  {
-
-
-
-
-    for (let i = 1; i <= 4; i++) {
-
-        marca = document.querySelector('#marca' + i) as HTMLInputElement;
-        diametro = document.querySelector('#diametro' + i) as HTMLInputElement;
-
-        wheel = new Wheel(diametro.value, marca.value);
-        arrayCars[arrayCars.length] //donar-hi més voltes
-        car.addWheel(wheel)
-
+        if (marca.value == "") {
+            marca.classList.add("is-invalid");
+            document.getElementById("errorMarca" + a)!.textContent = "El campo es obligatorio";
+            acumErrores++;
+        }
+        if (diametro.value == "") {
+            diametro.classList.add("is-invalid");
+            document.getElementById("errorDiametro" + a)!.textContent = "El campo es obligatorio";
+            acumErrores++;
+        } else if (diametro.value > 4 || diametro.value < 0.4) {
+            diametro.classList.add("is-invalid");
+            document.getElementById("errorDiametro" + a)!.textContent = "Has de introducir un valor entre 0.4 y el 4.";
+            acumErrores++;
+        }
     }
 
-    inputWheels.classList.add("d-none");
+    if (acumErrores == 0) {
+
+
+
+
+        for (let i = 1; i <= 4; i++) {
+
+            marca = document.querySelector('#marca' + i) as HTMLInputElement;
+            diametro = document.querySelector('#diametro' + i) as HTMLInputElement;
+
+            wheel = new Wheel(diametro.value, marca.value);
+            arrayCars[arrayCars.length] //donar-hi més voltes
+            car.addWheel(wheel)
+
+        }
+
+        inputWheels.classList.add("d-none");
+
+
+    }
 
 
 }
 
-
-}
-
-function validar_plate(plate:string){
+function validar_plate(plate: string) {
     var regex = /^([0-9]{4})([a-z]{3})$/i;
-	return regex.test(plate) ? true : false;
+    return regex.test(plate) ? true : false;
 
 }
 
 
-createTable();
+createList();
 
-function createTable(){
+function createList() {
 
-table = "<thead><tr><th>Matrícula</th><td>Marca</th><td>Color</th><th>Marca Rueda 1</th><th>Diametro rueda 1</th></th><th>Marca Rueda 2</th><th>Diametro rueda 2</th><th>Marca Rueda 3</th><th>Diametro rueda 3</th><th>Marca Rueda 4</th><th>Diametro rueda 4</th><thead>";
+    table = "<table><thead><tr><th>Matrícula</th><th>Marca</th><th>Color</th><th>Marca Rueda 1</th><th>Diametro rueda 1</th></th><th>Marca Rueda 2</th><th>Diametro rueda 2</th><th>Marca Rueda 3</th><th>Diametro rueda 3</th><th>Marca Rueda 4</th><th>Diametro rueda 4</th></tr><thead></table>";
 
 
-document.querySelector("#table")!.innerHTML = table;
-
+    var resultat = <HTMLDivElement>document.getElementById("table");
+    resultat.innerHTML = table;
 }

@@ -2,10 +2,9 @@ body, html {
   background-image: url("/Typescript/Vehicles/img/pexels-arthouse-studio-4344876.jpg");
   background-size: cover;
   background-image: no-repeat;
-  background-image: fixed;
-  background-image: center;
   height: 100%;
   width: 100%;
+  overflow: auto;
   display: flex;
   align-items: center;
  
@@ -51,6 +50,7 @@ body, html {
 
 .btn-wheels{
   margin-left: 45%;
+  margin-top: 25px;
 }
 
 .btn-car{
@@ -67,4 +67,36 @@ label{
     margin: 0px;
     padding: 0px;
     position:absolute;
+}
+
+@media(max-width: 767px){
+    .btn-wheels{
+        margin-left: 40%;
+   
+      }
+
+
+.inputWheels{
+        
+    height: 100%;
+    margin-top: 100px;
+    
+    }
+
+}
+
+#table{
+
+    color: white;
+    width: 100%;
+    font-size: 10px;
+   
+}
+
+#table, th, td, tr{
+    
+    color: white;
+    border: 2px solid white;
+    white-space: nowrap;
+
 }
