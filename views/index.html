@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+
+    <!--CSS-->
+    <link rel="stylesheet" href="styless.css">
+
+    <title>TypeScript Vehícles</title>
+    <script src="../models/car.js"></script>
+    <script src="../models/wheel.js"></script>
+    <script src="../controllers/controller.js"></script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <form class="form inputCar col-sm-12" id="inputCar">
+            <div>
+            <label for="plate">Matrícula</label>
+            <input type="text" id="plate"  placeholder="ex: 1234ABC" class="form-control" />
+            <div class="invalid-feedback" id="errorPlate"></div>
+        </div>
+        <div>
+            <label for="brand">Marca</label>
+            <input type="text" id="brand" placeholder="ex: Ferrari" class="form-control" />
+            <div class="invalid-feedback" id="errorBrand"></div>
+        </div>
+        <div>
+            <label for="color">Color</label>
+            <input type="text" id="color"placeholder="ex: Blau" class="form-control" />
+            <div class="invalid-feedback" id="errorColor"></div>
+        </div>
+
+        <div class="btn-car">
+            <p id="carInfo"></p>
+            <input type="button" class="btn btn-dark" onclick=" createCar()" value="Introdueix" />
+        </div>
+        </form>
+
+
+        <form class="form inputWheels d-none form-row" id="inputWheels" >
+            <div class="form ruedas col-lg-3 col-md-6 col-sm-12">
+                <label for="marca1">Marca rueda 1</label>
+                <input type="text" id="marca1" placeholder="" class="form-control" />
+                <div class="invalid-feedback" id="errorMarca1"></div>
+
+                <label for="diametro1">Diámetro rueda 1</label>
+                <input type="number" id="diametro1" placeholder="" class="form-control" />
+                <div class="invalid-feedback" id="errorDiametro1"></div>
+            </div>
+            <div class="form ruedas col-lg-3 col-md-6 col-sm-12">
+                <label for="marca2">Marca rueda 2</label>
+                <input type="text" id="marca2" placeholder=""  class="form-control"/>
+                <div class="invalid-feedback" id="errorMarca2"></div>
+
+                <label for="diametro2">Diámetro rueda 2</label>
+                <input type="number" id="diametro2" placeholder="" class="form-control" />
+                <div class="invalid-feedback" id="errorDiametro2"></div>
+            </div>
+            <div class="form ruedas col-lg-3 col-md-6 col-sm-12">
+                <label for="marca3">Marca rueda 3</label>
+                <input type="text" id="marca3" placeholder=""  class="form-control"/>
+                <div class="invalid-feedback" id="errorMarca3"></div>
+
+                <label for="diametro3">Diámetro rueda 3</label>
+                <input type="number" id="diametro3" placeholder="" class="form-control" />
+                <div class="invalid-feedback" id="errorDiametro3"></div>
+            </div>
+            <div class="form rueda col-lg-3 col-md-6 col-sm-12">
+                <label for="marca4">Marca rueda 4</label>
+                <input type="text" id="marca4" placeholder="" class="form-control" />
+                <div class="invalid-feedback" id="errorMarca4"></div>
+
+                <label for="diametro4">Diámetro rueda 4</label>
+                <input type="number" id="diametro4" placeholder="" class="form-control" />
+                <div class="invalid-feedback" id="errorDiametro4"></div>
+
+            </div>
+          
+            <div class="btn-wheels">
+                <p id="Introwheels"></p>
+                <input type="button" class="btn btn-dark" onclick=" createWheels()" value="Introdueix" />
+            </div>
+        </form>
+        <div id= table></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+</body>
+
+</html>
