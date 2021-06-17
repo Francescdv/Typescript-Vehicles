@@ -11,6 +11,10 @@ body, html {
 
 }
 
+h2{
+    text-align: center;
+}
+
 .container {
     
     line-height: 30px;
@@ -69,6 +73,39 @@ label{
     position:absolute;
 }
 
+
+
+#table{
+
+    color: white;
+    width: 100%;
+    font-size: 10px;
+    
+   
+}
+
+#table, th, td, tr{
+    
+    color: white;
+    border: 2px solid white;
+    white-space: nowrap;
+    
+
+}
+
+.table-container{
+    width: 758px;
+    background-color: #111;
+    opacity: 0.8;
+    color: #fff;
+    height: 100%;
+}
+
+#btnNewCar{
+    margin-left: 45%;
+    margin-top: 20px;
+}
+
 @media(max-width: 767px){
     .btn-wheels{
         margin-left: 40%;
@@ -82,21 +119,5 @@ label{
     margin-top: 100px;
     
     }
-
-}
-
-#table{
-
-    color: white;
-    width: 100%;
-    font-size: 10px;
-   
-}
-
-#table, th, td, tr{
-    
-    color: white;
-    border: 2px solid white;
-    white-space: nowrap;
 
 }

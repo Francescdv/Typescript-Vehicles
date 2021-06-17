@@ -12,8 +12,8 @@ function createCar(plate: string, brand: string, color: string) {
 
 var arrayCars: Car[] = [];
 
-let inputCar: any;
-let inputWheels: any;
+let inputCar = document.querySelector('#inputCar') as HTMLFormElement;
+let inputWheels =  document.querySelector('#inputWheels') as HTMLFormElement;
 let plate: any;
 let brand: any;
 let color: any;
@@ -22,7 +22,8 @@ let marca: any;
 let diametro: any;
 let wheel: any;
 let table: any;
-
+let createTableV: any;
+let btnNewCar: any;
 
 
 function createCar() {
@@ -33,6 +34,7 @@ function createCar() {
     inputWheels = document.querySelector('#inputWheels') as HTMLFormElement;
     let token: number = 1;
     let acumErrores = 0;
+   
 
     if (plate.value == "") {
         plate.classList.add("is-invalid");
@@ -62,7 +64,8 @@ function createCar() {
 
         for (let i = 0; i < arrayCars.length; i++) {
             if (plate.value == arrayCars[i].plate) {
-                window.alert("Aquest cotxe ja existeix");
+                plate.classList.add("is-invalid");
+                document.getElementById("errorPlate")!.textContent = "La matrícula ya existe";
                 token = 0;
             }
         }
@@ -83,8 +86,9 @@ function createCar() {
 }
 
 function createWheels() {
-    inputCar = document.querySelector('#inputCar') as HTMLFormElement;
-    inputWheels = document.querySelector('#inputWheels') as HTMLFormElement;
+    createTableV = document.querySelector('#table-container') as HTMLDivElement;
+   
+
     let acumErrores = 0;
     for (let a = 1; a <= 4; a++) {
 
@@ -103,7 +107,7 @@ function createWheels() {
             acumErrores++;
         } else if (diametro.value > 4 || diametro.value < 0.4) {
             diametro.classList.add("is-invalid");
-            document.getElementById("errorDiametro" + a)!.textContent = "Has de introducir un valor entre 0.4 y el 4.";
+            document.getElementById("errorDiametro" + a)!.textContent = "Introduce un valor entre 0.4 y el 4.";
             acumErrores++;
         }
     }
@@ -119,12 +123,15 @@ function createWheels() {
             diametro = document.querySelector('#diametro' + i) as HTMLInputElement;
 
             wheel = new Wheel(diametro.value, marca.value);
-            arrayCars[arrayCars.length] //donar-hi més voltes
-            car.addWheel(wheel)
+            arrayCars[arrayCars.length];
+            car.addWheel(wheel);
 
         }
 
         inputWheels.classList.add("d-none");
+        createTable();
+        createTableV.classList.remove("d-none");
+      
 
 
     }
@@ -139,13 +146,65 @@ function validar_plate(plate: string) {
 }
 
 
-createList();
 
-function createList() {
 
-    table = "<table><thead><tr><th>Matrícula</th><th>Marca</th><th>Color</th><th>Marca Rueda 1</th><th>Diametro rueda 1</th></th><th>Marca Rueda 2</th><th>Diametro rueda 2</th><th>Marca Rueda 3</th><th>Diametro rueda 3</th><th>Marca Rueda 4</th><th>Diametro rueda 4</th></tr><thead></table>";
+function createTable() {
+     
+    let cotxeEspecific: Car;
+
+    table = "<table><thead><tr><th>Matrícula</th><th>Marca</th><th>Color</th><th>Marca Rueda 1</th><th>Diametro rueda 1</th></th><th>Marca Rueda 2</th><th>Diametro rueda 2</th><th>Marca Rueda 3</th><th>Diametro rueda 3</th><th>Marca Rueda 4</th><th>Diametro rueda 4</th></tr><thead>";
+
+    for(let i = 0; i < arrayCars.length; i++){
+        
+        cotxeEspecific = arrayCars[i]
+
+        table += `<tr><td>${cotxeEspecific.plate}</td><td>${cotxeEspecific.brand}</td><td>${cotxeEspecific.color}</td><td>${cotxeEspecific.wheels[0].brand}</td><td>${cotxeEspecific.wheels[0].diameter}</td><td>${cotxeEspecific.wheels[1].brand}</td><td>${cotxeEspecific.wheels[1].diameter}</td><td>${cotxeEspecific.wheels[2].brand}</td><td>${cotxeEspecific.wheels[2].diameter}</td><td>${cotxeEspecific.wheels[3].brand}</td><td>${cotxeEspecific.wheels[3].diameter}</td></tr>`
+    } table += "</table>"
 
 
     var resultat = <HTMLDivElement>document.getElementById("table");
     resultat.innerHTML = table;
 }
+
+function newCar(){
+    createTableV = document.querySelector('#table-container') as HTMLDivElement;
+    plate = document.querySelector('#plate') as HTMLInputElement;
+    brand = document.querySelector('#brand') as HTMLInputElement;
+    color = document.querySelector('#color') as HTMLInputElement;
+
+    plate.value = "";
+    brand.value = "";
+    color.value = "";
+
+
+    for (let a = 1; a <= 4; a++) {
+
+        marca = document.querySelector('#marca' + a) as HTMLInputElement;
+        diametro = document.querySelector('#diametro' + a) as HTMLInputElement;
+
+        marca.value = "";
+        diametro.value = "";
+    
+    
+    }
+
+    inputCar.classList.remove("d-none");
+    createTableV.classList.add("d-none");
+    
+
+}
+
+
+
+inputCar.addEventListener('blur', (event:any) => {
+	console.log(event);
+	if(event.target.value!='') event.target.classList.remove('is-invalid');
+    createCar();
+}, true);
+
+
+inputWheels.addEventListener('blur', (event:any) => {
+	console.log(event);
+	if(event.target.value!='') event.target.classList.remove('is-invalid');
+    createWheels();
+}, true);
